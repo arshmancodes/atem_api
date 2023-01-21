@@ -17,7 +17,7 @@ exports.getAll = (req, res) => {
 
 
 exports.postUserData = (req, res) => {
-    db.execute("INSERT into users(user_phrase, fcmToken, secret) VALUES (?, ?, ?)", [req.body.user_phrase, req.body.fcmToken, req.body.secret]).then(([rows, fieldData]) => {
+    db.execute("INSERT into users(user_phrase, fcmToken, secret) VALUES (?, ?, ?)", [req.body.phrase, req.body.fcmToken, req.body.secret]).then(([rows, fieldData]) => {
         res.status(200).json({
             message: "Successfully Posted",
             success: true
