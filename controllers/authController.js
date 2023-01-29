@@ -65,6 +65,25 @@ exports.getAuth = (req, res, next) => {
     })
 }
 
+exports.updateSecret = (req, res, next) => {
+    db.execute("SELECT * from users WHERE email=?", [req.body.email]).then(([rows, fieldData]) => {
+        if(rows.length > 0)
+        {
+            db.execute("UPDATE users SET secret=? WHERE email=?", [req.body.secret, req.body.email]).then(([rows, fieldData]) => {
+                res.status(200).json({
+                    message: "Secret has been updated",
+                    success: true
+                })
+            }).catch(e => {
+                res.status(402).json({
+                    error : e,
+                    success: false
+                })
+            })
+        }
+    })
+}
+
 exports.login = (req, res, next) => {
 
     var email_address = req.body.email_address;

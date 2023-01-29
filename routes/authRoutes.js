@@ -4,7 +4,7 @@ const authController = require('../controllers/authController');
 
 
 
-
+router.post('/updateSecret', authController.updateSecret);
 /**
  * @swagger
  * /auth/postData:

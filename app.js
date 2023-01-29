@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const parser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerExpress = require('swagger-ui-express');
 
 app.use(parser.json());
 
